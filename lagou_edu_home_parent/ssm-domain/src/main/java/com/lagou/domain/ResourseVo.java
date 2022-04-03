@@ -1,6 +1,7 @@
 package com.lagou.domain;
 
-public class ResourceVo {
+public class ResourseVo {
+
     private Integer currentPage;
     private Integer pageSize;
     private String name;

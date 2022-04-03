@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MenuServiceImp implements MenuService {
+public class MenuServiceImpl implements MenuService {
+
     @Autowired
     private MenuMapper menuMapper;
+
+
     @Override
     public List<Menu> findSubMenuListByPid(int pid) {
         List<Menu> subMenuListByPid = menuMapper.findSubMenuListByPid(pid);
@@ -26,7 +29,7 @@ public class MenuServiceImp implements MenuService {
 
     @Override
     public Menu findMenuById(Integer id) {
-        Menu menuById = menuMapper.findMenuById(id);
-        return menuById;
+
+        return menuMapper.findMenuById(id);
     }
 }

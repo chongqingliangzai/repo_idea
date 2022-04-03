@@ -51,15 +51,17 @@ public class Menu {
 
     //更新人
     private String updatedBy;
-    //声明集合
-    private List<Menu> menus;
 
-    public List<Menu> getMenus() {
-        return menus;
+    // 声明集合：当前父级菜单所关联的子级菜单
+    private List<Menu> subMenuList;
+
+
+    public List<Menu> getSubMenuList() {
+        return subMenuList;
     }
 
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
+    public void setSubMenuList(List<Menu> subMenuList) {
+        this.subMenuList = subMenuList;
     }
 
     public Integer getId() {

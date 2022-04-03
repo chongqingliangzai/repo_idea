@@ -5,12 +5,16 @@ import com.lagou.domain.PromotionAd;
 import java.util.List;
 
 public interface PromotionAdMapper {
+
     /*
-    分页查询
+        分页查询广告信息
      */
-    public List<PromotionAd> findAllPromotionAd();
+    public List<PromotionAd> findAllPromotionAdByPage();
+
     /*
-    广告上下线
+        广告动态上下线
      */
-    void updatePromotionAdStatus(PromotionAd promotionAd);
+    public void updatePromotionAdStatus(PromotionAd promotionAd);
+
+
 }

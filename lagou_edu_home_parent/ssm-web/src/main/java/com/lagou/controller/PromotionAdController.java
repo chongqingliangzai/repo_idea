@@ -2,7 +2,7 @@ package com.lagou.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.lagou.domain.PromotionAd;
-import com.lagou.domain.PromotionAdVo;
+import com.lagou.domain.PromotionAdVO;
 import com.lagou.domain.ResponseResult;
 import com.lagou.service.PromotionAdService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +18,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/PromotionAd")
 public class PromotionAdController {
+
     @Autowired
     private PromotionAdService promotionAdService;
+
+    /*
+        广告分页查询
+     */
     @RequestMapping("/findAllPromotionAdByPage")
-    public ResponseResult findAllAdByPage(PromotionAdVo promotionAdVo){
-        PageInfo<PromotionAd> allPromotionAd = promotionAdService.findAllPromotionAd(promotionAdVo);
-        ResponseResult responseResult = new ResponseResult(true, 200, "广告分页查询成功", allPromotionAd);
+    public ResponseResult findAllAdByPage( PromotionAdVO promotionAdVO){
+
+        PageInfo<PromotionAd> pageInfo = promotionAdService.findAllPromotionAdByPage(promotionAdVO);
+
+        ResponseResult responseResult = new ResponseResult(true, 200, "广告分页查询成功", pageInfo);
+
         return responseResult;
 
     }
+
+    /*
+        图片上传
+     */
     @RequestMapping("/PromotionAdUpload")
     public ResponseResult fileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
 
@@ -80,9 +92,22 @@ public class PromotionAdController {
         return responseResult;
 
     }
+
+    /*'
+        广告动态上下线
+     */
     @RequestMapping("/updatePromotionAdStatus")
-    public ResponseResult updatePromotionAdStatus(Integer id , Integer status){
+    public ResponseResult updatePromotionStatus(Integer id,Integer status){
+
         promotionAdService.updatePromotionAdStatus(id,status);
-        return new ResponseResult(true,200,"广告上下限成功",null);
+
+        ResponseResult responseResult = new ResponseResult(true, 200, "广告动态上下线成功", null);
+
+        return responseResult;
+
     }
+
+
+
+
 }

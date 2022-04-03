@@ -4,6 +4,7 @@ import com.lagou.domain.ResourceCategory;
 import com.lagou.domain.ResponseResult;
 import com.lagou.service.ResourceCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,11 +13,36 @@ import java.util.List;
 @RestController
 @RequestMapping("/ResourceCategory")
 public class ResourceCategoryController {
+
     @Autowired
-    private ResourceCategoryService categoryService;
-    @RequestMapping("/")
+    private ResourceCategoryService resourceCategoryService;
+
+    @RequestMapping("/findAllResourceCategory")
     public ResponseResult findAllResourceCategory(){
-        List<ResourceCategory> allResourceCategory = categoryService.findAllResourceCategory();
-        return new ResponseResult(true,200,"查询所有资源文件成功",allResourceCategory);
+        List<ResourceCategory> allResourceCategory = resourceCategoryService.findAllResourceCategory();
+
+        return  new ResponseResult(true,200,"查询所有分类信息成功",allResourceCategory);
+
     }
+    @RequestMapping("/saveOrUpdateResourceCategory")
+    public ResponseResult saveOrUpdateResourceCategory(@RequestBody ResourceCategory resourceCategory){
+        if (resourceCategory.getId() == null){
+            resourceCategoryService.saveResourceCategory(resourceCategory);
+            return new ResponseResult(true,200,"添加资源信息成功",null);
+        }else {
+            resourceCategoryService.updateResourceCategory(resourceCategory);
+            return new ResponseResult(true,200,"修改资源信息成功",null);
+        }
+
+    }
+    /*
+    删除资源信息
+     */
+    @RequestMapping("/deleteResourceCategory")
+    public ResponseResult deleteResourceCategory(Integer id){
+        resourceCategoryService.deleteResourceCategory(id);
+        return new ResponseResult(true,200,"删除资源信息成功",null);
+    }
+
+
 }

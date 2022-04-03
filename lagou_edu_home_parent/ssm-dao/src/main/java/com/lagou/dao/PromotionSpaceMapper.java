@@ -5,20 +5,27 @@ import com.lagou.domain.PromotionSpace;
 import java.util.List;
 
 public interface PromotionSpaceMapper {
+
     /*
-    获取所有广告位
+        获取所有广告位
      */
-    List<PromotionSpace> findAllPromotionSpace();
+    public List<PromotionSpace> findAllPromotionSpace();
+
+
     /*
-    添加广告位
+        添加广告位
      */
-    void savePromotionSpace(PromotionSpace promotionSpace);
+    public void savePromotionSpace(PromotionSpace promotionSpace);
+
     /*
-    查询广告为
-     */
-    PromotionSpace findPromotionSpaceById(Integer id);
+         根据Id查询广告位信息
+    */
+    public PromotionSpace findPromotionSpaceById(int id);
+
     /*
-    更新广告位
+         更新广告位名称
      */
-    void updatePromotionSpace(PromotionSpace promotionSpace);
+    public void updatePromotionSpace(PromotionSpace promotionSpace);
+
+
 }

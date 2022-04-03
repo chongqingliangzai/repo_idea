@@ -3,7 +3,9 @@ package com.lagou.domain;
 import java.util.List;
 
 public class RoleMenuVo {
+
     private Integer roleId;
+
     private List<Integer> menuIdList;
 
     public Integer getRoleId() {
@@ -20,5 +22,13 @@ public class RoleMenuVo {
 
     public void setMenuIdList(List<Integer> menuIdList) {
         this.menuIdList = menuIdList;
+    }
+
+    @Override
+    public String toString() {
+        return "RoleMenuVo{" +
+                "roleId=" + roleId +
+                ", menuIdList=" + menuIdList +
+                '}';
     }
 }

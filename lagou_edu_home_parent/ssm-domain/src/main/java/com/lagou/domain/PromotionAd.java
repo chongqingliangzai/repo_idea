@@ -32,7 +32,8 @@ public class PromotionAd {
     // 优先级
     private Integer priority;
     private String img;
-    //声明一方关系
+
+    //声明一方关系：PromotionSpace
     private PromotionSpace promotionSpace;
 
     public PromotionSpace getPromotionSpace() {
